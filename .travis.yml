@@ -4,7 +4,7 @@ group: edge
 virt: vm
 arch: 
     - amd64
-    - arm64-graviton
+    - arm64-graviton2
 
 cache:
   directories:
