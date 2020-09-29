@@ -28,7 +28,7 @@ sudo apt-get install -y -qq \
   fuse
 
 # Install fuse
-ls /lib/modules/5.3.0-42-generic/
+ls /lib/modules/
 sudo modprobe fuse
 sudo chmod 666 /dev/fuse
 sudo cp etc/build/fuse.conf /etc/fuse.conf
