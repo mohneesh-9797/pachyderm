@@ -1,3 +1,7 @@
+arch: 
+    - amd64
+    - arm64
+
 dist: xenial
 sudo: required
 cache:
@@ -41,6 +45,9 @@ stages:
 jobs:
   include:
     - stage: build
+      script: etc/testing/travis_build_check_and_stash.sh && etc/testing/travis_build.sh
+    - arch: arm64
+      stage: build
       script: etc/testing/travis_build_check_and_stash.sh && etc/testing/travis_build.sh
 
 before_install:
