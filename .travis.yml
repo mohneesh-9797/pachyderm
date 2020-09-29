@@ -6,8 +6,6 @@ arch:
     - amd64
     - arm64-graviton
 
-dist: xenial
-sudo: required
 cache:
   directories:
     # If any directories are added here, they must also be added to
