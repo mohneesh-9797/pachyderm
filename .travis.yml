@@ -52,7 +52,8 @@ jobs:
       arch: arm64-graviton2
       sudo: required
       group: edge
-      virt: vmstage: build
+      virt: vm
+      stage: build
       script: etc/testing/travis_build_check_and_stash.sh && etc/testing/travis_build.sh
 
 before_install:
