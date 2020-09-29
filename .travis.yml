@@ -48,8 +48,10 @@ jobs:
   include:
     - stage: build
       script: etc/testing/travis_build_check_and_stash.sh && etc/testing/travis_build.sh
-    - arch: arm64
-      stage: build
+    - dist: focal
+      sudo: required
+      group: edge
+      virt: vmstage: build
       script: etc/testing/travis_build_check_and_stash.sh && etc/testing/travis_build.sh
 
 before_install:
