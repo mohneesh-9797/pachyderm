@@ -28,6 +28,9 @@ sudo apt-get install -y -qq \
   fuse
 
 # Install fuse
+if [ `uname -m` = 'aarch64' ]; then
+  apt install --reinstall linux-headers-5.3.0-46 linux-headers-5.3.0-46-generic linux-image-5.3.0-46-generic
+fi
 sudo modprobe fuse
 sudo chmod 666 /dev/fuse
 sudo cp etc/build/fuse.conf /etc/fuse.conf
