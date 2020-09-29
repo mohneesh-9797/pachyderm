@@ -1,6 +1,10 @@
+dist: focal
+sudo: required
+group: edge
+virt: vm
 arch: 
     - amd64
-    - arm64
+    - arm64-graviton
 
 dist: xenial
 sudo: required
