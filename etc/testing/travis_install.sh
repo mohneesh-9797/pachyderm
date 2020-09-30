@@ -85,10 +85,10 @@ fi
 if [ ! -f ~/cached-deps/etcdctl ] ; then
     if [ `uname -m` = 'aarch64' ]; then
       ETCD_VERSION=v3.3.12;
-      curl -L https://storage.googleapis.com/etcd/${ETCD_VERSION}/etcd-${ETCD_VERSION}-linux-amd64.tar.gz \
+      curl -L https://storage.googleapis.com/etcd/${ETCD_VERSION}/etcd-${ETCD_VERSION}-linux-amd64.tar.gz;
     else
       ETCD_VERSION=v3.1.14;
-      curl -L https://storage.googleapis.com/etcd/${ETCD_VERSION}/etcd-${ETCD_VERSION}-linux-arm64.tar.gz \
+      curl -L https://storage.googleapis.com/etcd/${ETCD_VERSION}/etcd-${ETCD_VERSION}-linux-arm64.tar.gz;
     fi
         | tar xzf - --strip-components=1 && \
         mv ./etcdctl ~/cached-deps/etcdctl
