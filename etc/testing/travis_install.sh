@@ -43,7 +43,11 @@ pip3 install --upgrade --user awscli
 # curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt
 if [ ! -f ~/cached-deps/kubectl ] ; then
     KUBECTL_VERSION=v1.13.0
-    curl -L -o kubectl https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl && \
+    if [ `uname -m` = 'aarch64' ]; then
+      curl -L -o kubectl https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl && \
+    else
+      curl -L -o kubectl https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/arm64/kubectl && \
+    fi
         chmod +x ./kubectl && \
         mv ./kubectl ~/cached-deps/kubectl
 fi
@@ -52,15 +56,25 @@ fi
 # To get the latest minikube version:
 # curl https://api.github.com/repos/kubernetes/minikube/releases | jq -r .[].tag_name | sort | tail -n1
 if [ ! -f ~/cached-deps/minikube ] ; then
-    MINIKUBE_VERSION=v0.31.0
-    curl -L -o minikube https://storage.googleapis.com/minikube/releases/${MINIKUBE_VERSION}/minikube-linux-amd64 && \
+    if [ `uname -m` = 'aarch64' ]; then
+      MINIKUBE_VERSION=latest;
+      curl -L -o minikube https://storage.googleapis.com/minikube/releases/${MINIKUBE_VERSION}/minikube-linux-arm64 && \
+    else
+      MINIKUBE_VERSION=v0.31.0;
+      curl -L -o minikube https://storage.googleapis.com/minikube/releases/${MINIKUBE_VERSION}/minikube-linux-amd64 && \
+    fi
+
         chmod +x ./minikube && \
         mv ./minikube ~/cached-deps/minikube
 fi
 
 # Install vault
 if [ ! -f ~/cached-deps/vault ] ; then
-    curl -Lo vault.zip https://releases.hashicorp.com/vault/1.2.3/vault_1.2.3_linux_amd64.zip && \
+    if [ `uname -m` = 'aarch64' ]; then
+      curl -Lo vault.zip https://releases.hashicorp.com/vault/1.2.3/vault_1.2.3_linux_arm64.zip && \
+    else
+      curl -Lo vault.zip https://releases.hashicorp.com/vault/1.2.3/vault_1.2.3_linux_amd64.zip && \
+    fi
         unzip vault.zip && \
         mv ./vault ~/cached-deps/vault
 fi
@@ -69,8 +83,13 @@ fi
 # To get the latest etcd version:
 # curl -Ls https://api.github.com/repos/etcd-io/etcd/releases | jq -r .[].tag_name
 if [ ! -f ~/cached-deps/etcdctl ] ; then
-    ETCD_VERSION=v3.3.12
-    curl -L https://storage.googleapis.com/etcd/${ETCD_VERSION}/etcd-${ETCD_VERSION}-linux-amd64.tar.gz \
+    if [ `uname -m` = 'aarch64' ]; then
+      ETCD_VERSION=v3.3.12;
+      curl -L https://storage.googleapis.com/etcd/${ETCD_VERSION}/etcd-${ETCD_VERSION}-linux-amd64.tar.gz \
+    else
+      ETCD_VERSION=v3.1.14;
+      curl -L https://storage.googleapis.com/etcd/${ETCD_VERSION}/etcd-${ETCD_VERSION}-linux-arm64.tar.gz \
+    fi
         | tar xzf - --strip-components=1 && \
         mv ./etcdctl ~/cached-deps/etcdctl
 fi
