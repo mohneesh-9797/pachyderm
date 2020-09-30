@@ -5,7 +5,7 @@ virt: vm
 arch: 
     - amd64
     - arm64-graviton2
-
+    - arm64
 cache:
   directories:
     # If any directories are added here, they must also be added to
