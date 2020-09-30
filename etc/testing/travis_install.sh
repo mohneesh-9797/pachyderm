@@ -90,9 +90,8 @@ if [ ! -f ~/cached-deps/etcdctl ] ; then
     else
       ETCD_VERSION=v3.1.14;
       curl -L https://storage.googleapis.com/etcd/${ETCD_VERSION}/etcd-${ETCD_VERSION}-linux-arm64.tar.gz \
-      | tar xzf - --strip-components=1 && \
+      | tar xzf - --strip-components=1 ;
     fi
-        | tar xzf - --strip-components=1 && \
         mv ./etcdctl ~/cached-deps/etcdctl
 fi
 
