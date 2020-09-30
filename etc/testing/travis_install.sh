@@ -58,22 +58,22 @@ fi
 if [ ! -f ~/cached-deps/minikube ] ; then
     if [ `uname -m` = 'aarch64' ]; then
       MINIKUBE_VERSION=latest;
-      curl -L -o minikube https://storage.googleapis.com/minikube/releases/${MINIKUBE_VERSION}/minikube-linux-arm64 && \
+      curl -L -o minikube https://storage.googleapis.com/minikube/releases/${MINIKUBE_VERSION}/minikube-linux-arm64;
     else
       MINIKUBE_VERSION=v0.31.0;
-      curl -L -o minikube https://storage.googleapis.com/minikube/releases/${MINIKUBE_VERSION}/minikube-linux-amd64 && \
+      curl -L -o minikube https://storage.googleapis.com/minikube/releases/${MINIKUBE_VERSION}/minikube-linux-amd64;
     fi
 
-        chmod +x ./minikube && \
-        mv ./minikube ~/cached-deps/minikube
+    chmod +x ./minikube && \
+    mv ./minikube ~/cached-deps/minikube
 fi
 
 # Install vault
 if [ ! -f ~/cached-deps/vault ] ; then
     if [ `uname -m` = 'aarch64' ]; then
-      curl -Lo vault.zip https://releases.hashicorp.com/vault/1.2.3/vault_1.2.3_linux_arm64.zip && \
+      curl -Lo vault.zip https://releases.hashicorp.com/vault/1.2.3/vault_1.2.3_linux_arm64.zip;
     else
-      curl -Lo vault.zip https://releases.hashicorp.com/vault/1.2.3/vault_1.2.3_linux_amd64.zip && \
+      curl -Lo vault.zip https://releases.hashicorp.com/vault/1.2.3/vault_1.2.3_linux_amd64.zip;
     fi
         unzip vault.zip && \
         mv ./vault ~/cached-deps/vault
