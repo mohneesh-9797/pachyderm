@@ -44,9 +44,9 @@ pip3 install --upgrade --user awscli
 if [ ! -f ~/cached-deps/kubectl ] ; then
     KUBECTL_VERSION=v1.13.0
     if [ `uname -m` = 'aarch64' ]; then
-      curl -L -o kubectl https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl ;
-    else
       curl -L -o kubectl https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/arm64/kubectl ;
+    else
+      curl -L -o kubectl https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl ;
     fi
     chmod +x ./kubectl && \
     mv ./kubectl ~/cached-deps/kubectl
